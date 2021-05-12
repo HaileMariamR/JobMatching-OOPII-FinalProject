@@ -15639,6 +15639,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Mainpage/MainIndex.cshtml",
+      "TargetPath": "Views\\Mainpage\\MainIndex.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
