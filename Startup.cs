@@ -25,9 +25,9 @@ namespace JobMatching_OOPII_FinalProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllersWithViews();
             services.AddDbContext<ProjectDatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("projectDatabaseConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

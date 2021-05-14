@@ -1,0 +1,36 @@
+@model Models.projectModels.Job;
+
+
+<form asp-action="PostJob" asp-area="" method="post">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label>JobTitle:</label>
+                <input asp-for="JobTitle" type="text" class="form-control required" placeholder="Enter Job Title" tabindex="1">
+            </div>
+             <div class="form-group">
+                <label>JobDetail:</label>
+                <textarea asp-for="JobDetail" name="" id="" cols="30" class="form-control required" rows="10"></textarea>
+            </div>
+        
+             <div class="form-group">
+                <label>Comapany:</label>
+                <input asp-for="CompanyName" type="text" class="form-control required" placeholder="Enter Comapny name" tabindex="4">
+            </div>
+
+             <div class="form-group">
+                <label>DateTime:</label>
+                <input asp-for="dateTime" type="text" class="form-control required" placeholder="Date" tabindex="4">
+            </div>
+             
+            <div class="form-group">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            <div class="card-footer">
+                <center>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</form>

@@ -52,11 +52,17 @@
                             <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Login" asp-action="Signup">Signup</a>
                 </li>
             </ul>
-            
             </div>
         </div>
      </nav>
-    </header>
+           <li class="nav-item  pull-right">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Applicants" asp-action="ApplicantSignup">Register as User </a>
+                </li>
+                      <li class="nav-item  pull-right">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="HiringManagerSignup">Regist as Hiring Manager</a>
+                </li>
+
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

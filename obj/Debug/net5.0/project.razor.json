@@ -15619,6 +15619,16 @@
   "RootNamespace": "JobMatching_OOPII_FinalProject",
   "Documents": [
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/HiringManager/PostJob.cshtml",
+      "TargetPath": "Views\\HiringManager\\PostJob.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/HiringManager/HiringManagerSignup.cshtml",
+      "TargetPath": "Views\\HiringManager\\HiringManagerSignup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -15634,13 +15644,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/Error.cshtml",
-      "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/MainIndex.cshtml",
+      "TargetPath": "Views\\Main\\MainIndex.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Mainpage/MainIndex.cshtml",
-      "TargetPath": "Views\\Mainpage\\MainIndex.cshtml",
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/Error.cshtml",
+      "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15649,8 +15659,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Login/Signin.cshtml",
-      "TargetPath": "Views\\Login\\Signin.cshtml",
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/HiringManager/HiringIndex.cshtml",
+      "TargetPath": "Views\\HiringManager\\HiringIndex.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15664,8 +15674,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Login/Signup.cshtml",
-      "TargetPath": "Views\\Login\\Signup.cshtml",
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Applicants/ApplicantSignup.cshtml",
+      "TargetPath": "Views\\Applicants\\ApplicantSignup.cshtml",
       "FileKind": "mvc"
     }
   ],

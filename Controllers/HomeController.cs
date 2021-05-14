@@ -17,11 +17,13 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         {
             _logger = logger;
         }
+        
 
         public IActionResult Index()
         {
             return View();
         }
+
 
         public IActionResult Privacy()
         {

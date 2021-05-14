@@ -1,0 +1,58 @@
+@model List<Models.projectModels.Job>;
+
+
+
+@{
+    @* ViewData["Title"] = "Home Page"; *@
+    Layout ="";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Job-matching</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<div class="text-center m-4 p-4">
+    @* <h1 class="display-4">Welcome To</h1> *@
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+    <h1>
+        Main Index
+    </h1>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>List of avaliable Jobs</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      
+            
+                       @foreach(var item in Model)
+
+                            {
+
+
+                                <div class="card" style="">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.JobTitle</h5>
+                                <p>@item.JobDetail</p>
+                                <a href="#" class="btn btn-primary">@item.CompanyName</a>
+                                <p>@item.dateTime</p>
+                            </div>
+                            </div>
+                                    
+                             
+                                
+                                
+                    }
+
+             
+    </div>
+</div>
