@@ -1,6 +1,8 @@
 @{
     Layout ="";
 }
+@using System.Security.Claims;
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,5 +17,15 @@
            <li class="nav-item  ">
                             <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
                 </li>
+                  <li class="nav-item  ">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
+                </li>
+            <h2>@User.Identity.Name</h2>
+
+            <li class="nav-item  ">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
+                </li>
+
+
 
 </div>

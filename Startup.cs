@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using ProjectContext.Data;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace JobMatching_OOPII_FinalProject
 {
@@ -27,8 +27,9 @@ namespace JobMatching_OOPII_FinalProject
         {
             services.AddControllersWithViews();
             services.AddDbContext<ProjectDatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("projectDatabaseConnection")));
-
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,9 +45,8 @@ namespace JobMatching_OOPII_FinalProject
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

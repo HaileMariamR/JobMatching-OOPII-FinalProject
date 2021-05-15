@@ -9,6 +9,9 @@ using JobMatching_OOPII_FinalProject.Models;
 using Models.projectModels;
 using ProjectContext.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 namespace JobMatching_OOPII_FinalProject.Controllers
@@ -16,9 +19,9 @@ namespace JobMatching_OOPII_FinalProject.Controllers
     public class LoginController : Controller
     {
 
-        private ProjectDatabaseContext _projectDatabaseContext;
+        private ProjectDatabaseContext _database;
         public LoginController(ProjectDatabaseContext projectdatabasecontext){
-            _projectDatabaseContext =projectdatabasecontext;
+            _database =projectdatabasecontext;
 
         }
 
@@ -29,54 +32,64 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
         }
 
-        // [HttpPost]
-        //  public IActionResult Signin(Login login)
-        // {
 
-        //     if (login.Email == "admin@gmail.com" & login.Password =="admin"){
-        //         return RedirectToAction("AdminIndex" , "Admin");
-        //     }
-        //    else if (login.Email == "user@gmail.com" & login.Password =="user"){
-        //         return RedirectToAction("MainIndex" , "Mainpage");
-        //     }
-        //      else if (login.Email == "hiringmanager@gmail.com" & login.Password =="hiringmanager"){
-        //         return RedirectToAction("HiringManager" , "Mainpage");
-        //     }
-            
-        //     return View(login);
+        [HttpPost]
+         public IActionResult Signin(Login loginvalue)
+        {
+            var userApplicant = _database.applicants.Where( value => value.Email == loginvalue.Email).FirstOrDefault();
+            var hiringmanager_one = _database.hiringManagers.Where(value =>value.Email == loginvalue.Email).FirstOrDefault();
 
-        // }
+
+            if (loginvalue.Email == "admin@gmail.com" & loginvalue.Password =="admin"){
+                return RedirectToAction("AdminIndex" , "Admin");
+            }
+            else if (userApplicant !=null){
+                
+                if((userApplicant.Email.ToString()==loginvalue.Email) & (userApplicant.Password.ToString()== loginvalue.Password)){
+                        
+                            var userIdentity = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.Name , userApplicant.Email)
+                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(userIdentity);
+                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+
+
+                             return RedirectToAction("MainIndex" , "Main");
+                }
+            }
+            else if (hiringmanager_one !=null){
+                  if((hiringmanager_one.Email.ToString()==loginvalue.Email) & (hiringmanager_one.Password.ToString() == loginvalue.Password)){
+
+
+                               
+                            var userIdentity = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.Name , hiringmanager_one.Email)
+                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(userIdentity);
+                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+
+
+                             return RedirectToAction("HiringIndex" , "HiringManager");
+
+                }
+            }else{
+                return Content("Invalid  Email or password !");
+            }
+
+            return View(loginvalue);
+
+        }
 
         
+
+
+
         public IActionResult Signup()
         {
             return View();
         }
         [HttpPost]
-        // public  IActionResult Signup(Applicants applicants)
-        // {
-        //     if (ModelState.IsValid){
-        //     try{
-
-        //         // _projectDatabaseContext.applicants.Add(applicants);
-        //         // await _projectDatabaseContext.SaveChangesAsync();
-        //         // return RedirectToAction("MainIndex" , "Mainpage");
-
-
-
-        //     }
-        //     catch(Exception){
-        //          ModelState.AddModelError("", "Unable to Register.");
-
-        //     }
-
-        //     }
-
-
-        //     return View(applicants);
-
-        
-        // }
+    
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -84,6 +97,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
         
     }
 }

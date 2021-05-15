@@ -9,6 +9,11 @@ using JobMatching_OOPII_FinalProject.Models;
 using Models.projectModels;
 using Microsoft.EntityFrameworkCore;
 using ProjectContext.Data;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
+
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
@@ -34,9 +39,26 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
                 if (ModelState.IsValid){
                     try{
-                            _database.applicants.Add(applicants);
+
+                        var applicant_value = _database.applicants.Where(value => value.Email==applicants.Email).FirstOrDefault();
+                        if (applicant_value == null){
+
+                             _database.applicants.Add(applicants);
                              _database.SaveChanges();
+
+
+
+                          var userIdentity = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.Name , applicant_value.Email)
+                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(userIdentity);
+                            var userlogin = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+
+
                              return RedirectToAction("MainIndex" , "Main");
+                               
+                        }
+
 
                     }catch(Exception ex){
                         Console.Write($"Error : {ex.Message}");

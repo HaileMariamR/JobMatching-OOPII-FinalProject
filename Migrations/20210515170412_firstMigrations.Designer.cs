@@ -8,8 +8,8 @@ using ProjectContext.Data;
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    [Migration("20210514124024_intialmigration")]
-    partial class intialmigration
+    [Migration("20210515170412_firstMigrations")]
+    partial class firstMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

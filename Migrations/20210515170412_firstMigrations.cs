@@ -2,7 +2,7 @@
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
-    public partial class intialmigration : Migration
+    public partial class firstMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
