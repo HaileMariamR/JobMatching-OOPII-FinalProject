@@ -33,35 +33,37 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         {
             return View();
         }
-
         [HttpPost]
-     
-        // [HttpPost]
             public IActionResult ApplicantSignup(Applicants applicants)
         {
 
-            if (applicants != null){
-                return RedirectToAction("MainIndex" , "Main");
-
-            }
-
+                
                 if (ModelState.IsValid){
                     try{
-
-                        var applicant_value = _database.applicants.Where(value => value.Email==applicants.Email).First();
-                        if (applicant_value == null){
-
-                             _database.applicants.Add(applicants);
+                        
+                       
+                        var applicants_one = _database.applicants.Where(value =>value.Email == applicants.Email).FirstOrDefault();
+                        if (applicants_one == null){
+                            
+                                _database.applicants.Add(applicants);
                              _database.SaveChanges();
+                            
+                             var userIdentity = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.Name , applicants.Email)
+                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(userIdentity);
+                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
 
-                            ViewData["userEmail"] = applicants.Email.ToString();
+                           
+                           
+                             return RedirectToAction("MainIndex" , "Main" , new {userEmailAddress=applicants.Email.ToString()});
 
-                             return RedirectToAction("MainIndex" , "Main");
-
-
-                               
+            
+                        }else{
+                            return Content("user already exist!");
+                        
                         }
-                    
+ 
 
 
                     }catch(Exception ex){
@@ -70,8 +72,11 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     }
                 }
 
-            return View();
+            return View(applicants);
+
         }
+
+
 
 
 

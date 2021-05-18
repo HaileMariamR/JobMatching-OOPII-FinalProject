@@ -1,9 +1,12 @@
-@model List<Models.projectModels.Job>;
+@using Models.projectModels;
+@model MainIndexModels;
+@using System.Web;
+@using  Microsoft.AspNetCore.Http;
+
 
 
 
 @{
-    @* ViewData["Title"] = "Home Page"; *@
     Layout ="";
 }
 <head>
@@ -14,21 +17,17 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <div class="text-center m-4 p-4">
-    @* <h1 class="display-4">Welcome To</h1> *@
-    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
     <h1>
         Main Index
     </h1>
-            <h2>@ViewData["userEmail"]</h2>
+            @* <h2>@Context.Request.Query["userEmailAddress"]</h2> *@
+            <h1>@User.Identity.Name</h1>
     
 </div>
 
    <li class="nav-item  ">
                             <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
                 </li>
-
-
-
 
 
 
@@ -41,7 +40,7 @@
     <div class="col-md-12">
       
             
-                       @foreach(var item in Model)
+                       @foreach(var item in Model.mainIndexjobs)
 
                             {
 

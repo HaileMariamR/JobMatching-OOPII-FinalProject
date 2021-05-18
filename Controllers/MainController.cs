@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using JobMatching_OOPII_FinalProject.Models;
 using ProjectContext.Data;
 using Microsoft.AspNetCore.Authorization;
+using Models.projectModels;
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
@@ -28,8 +29,9 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         public IActionResult MainIndex()
         {
             var allJobs = _database.jobs.ToList();
-            
-            return View(allJobs);
+            MainIndexModels mainIndexModels = new MainIndexModels();
+            mainIndexModels.mainIndexjobs = allJobs;
+            return View(mainIndexModels);
         }
 
 

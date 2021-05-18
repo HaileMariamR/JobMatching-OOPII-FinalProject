@@ -13,6 +13,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
@@ -45,26 +46,25 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
             if(ModelState.IsValid){
                 try{    
-                    // job.userEmail = cp;
                  
                     job.userEmail = value.ToString();
                     _database.jobs.Add(job);
                      _database.SaveChanges();
-                    return RedirectToAction("HiringInde" , "HiringManager");
+                    return RedirectToAction("HiringIndex" , "HiringManager");
                     
                 }
                 catch(Exception ex){
                     Console.Write($"Error : {ex.Message}");
                 }
             }
-            return View();
+            return View(job);
         }
         public IActionResult HiringIndex(){
 
+             var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
             
-     
-            var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
-             var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == (ViewData["userEmail"]).ToString());
+            
+             var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == value.ToString());
              if (alljobsRelatedtoCurrentuser == null){
                  return View();
              }
@@ -89,9 +89,14 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                                 _database.hiringManagers.Add(hiringManager);
                              _database.SaveChanges();
                             
-                            ViewData["userEmail"] = hiringManager.Email.ToString();
+                                   var userIdentity = new ClaimsIdentity(new[] {
+                                new Claim(ClaimTypes.Name , hiringManager.Email)
+                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            var principal = new ClaimsPrincipal(userIdentity);
+                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+
                            
-                             return RedirectToAction("HiringIndex" , "HiringManager");
+                             return RedirectToAction("HiringIndex" , "HiringManager" , new {userEmailAdress=hiringManager.Email.ToString()});
 
             
                         }else{

@@ -2,7 +2,7 @@
     Layout ="";
 }
 
-@model List<Models.projectModels.Job>
+@* @model List<Models.projectModels.Job> *@
 
 @using System.Security.Claims;
 
@@ -17,12 +17,15 @@
     <h1>  
         Hiring Index
     </h1>
+    
           
                             <a class="text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
              
              
             @* <h2>@User.Identity.Name</h2> *@
-            <h1>@ViewData["userEmail"]</h1>
+            <h2>@User.Identity.Name</h2>
+            @* <h1>@Context.Request.Query["userEmailAddress"]</h1> *@
+
 
             <li class="nav-item  ">
                             <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
@@ -36,7 +39,7 @@
 <div class="Container">
 
     
-                       @foreach(var item in Model)
+                        @foreach(var item in Model)
 
                             {
 
@@ -54,7 +57,9 @@
                              
                                 
                                 
-                    }
+                    } 
+                    
 
 
 </div>
+
