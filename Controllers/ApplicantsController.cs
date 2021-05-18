@@ -33,31 +33,35 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
+     
+        // [HttpPost]
             public IActionResult ApplicantSignup(Applicants applicants)
         {
+
+            if (applicants != null){
+                return RedirectToAction("MainIndex" , "Main");
+
+            }
 
                 if (ModelState.IsValid){
                     try{
 
-                        var applicant_value = _database.applicants.Where(value => value.Email==applicants.Email).FirstOrDefault();
+                        var applicant_value = _database.applicants.Where(value => value.Email==applicants.Email).First();
                         if (applicant_value == null){
 
                              _database.applicants.Add(applicants);
                              _database.SaveChanges();
 
-
-
-                          var userIdentity = new ClaimsIdentity(new[] {
-                                new Claim(ClaimTypes.Name , applicant_value.Email)
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
-                            var principal = new ClaimsPrincipal(userIdentity);
-                            var userlogin = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
-
+                            ViewData["userEmail"] = applicants.Email.ToString();
 
                              return RedirectToAction("MainIndex" , "Main");
+
+
                                
                         }
+                    
 
 
                     }catch(Exception ex){
@@ -66,7 +70,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     }
                 }
 
-            return View(applicants);
+            return View();
         }
 
 

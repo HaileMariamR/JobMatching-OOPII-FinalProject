@@ -1,5 +1,16 @@
 @model Models.projectModels.Applicants;
 
+@{
+    Layout = "";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | Job-matching</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
 <form asp-action="ApplicantSignup" asp-area="" method="post">
     <div class="row">
         <div class="col-lg-12">

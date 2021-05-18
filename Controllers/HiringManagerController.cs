@@ -16,7 +16,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
-    [Authorize]
     public class HiringManagerController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -39,25 +38,38 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             return View();
         }
 
+
         [HttpPost]
         public  IActionResult PostJob(Job job){
+             var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+
             if(ModelState.IsValid){
                 try{    
-
+                    // job.userEmail = cp;
+                 
+                    job.userEmail = value.ToString();
                     _database.jobs.Add(job);
                      _database.SaveChanges();
-                    return RedirectToAction("HiringIndex" , "HiringManager");
+                    return RedirectToAction("HiringInde" , "HiringManager");
                     
                 }
                 catch(Exception ex){
                     Console.Write($"Error : {ex.Message}");
                 }
             }
-            return View(job);
-        }
-        public IActionResult HiringIndex(){
             return View();
         }
+        public IActionResult HiringIndex(){
+
+            
+     
+            var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+             var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == (ViewData["userEmail"]).ToString());
+             if (alljobsRelatedtoCurrentuser == null){
+                 return View();
+             }
+            return View(alljobsRelatedtoCurrentuser);
+        }   
         public IActionResult HiringManagerSignup()
         {
             return View();
@@ -66,27 +78,25 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             public IActionResult HiringManagerSignup(HiringManager hiringManager)
         {
 
+                
                 if (ModelState.IsValid){
                     try{
                         
                        
                         var hiringmanager_one = _database.hiringManagers.Where(value =>value.Email == hiringManager.Email).FirstOrDefault();
                         if (hiringmanager_one == null){
-
+                            
                                 _database.hiringManagers.Add(hiringManager);
                              _database.SaveChanges();
                             
-                                 var userIdentity = new ClaimsIdentity(new[] {
-                                new Claim(ClaimTypes.Name , hiringmanager_one.Email)
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
-                            var principal = new ClaimsPrincipal(userIdentity);
-                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
-
-
-
-
+                            ViewData["userEmail"] = hiringManager.Email.ToString();
+                           
                              return RedirectToAction("HiringIndex" , "HiringManager");
+
             
+                        }else{
+                            return Content("user already exist!");
+                        
                         }
  
 
@@ -98,10 +108,8 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                 }
 
             return View(hiringManager);
+
         }
-
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -110,3 +118,4 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         }
     }
 }
+

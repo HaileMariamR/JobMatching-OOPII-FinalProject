@@ -173,3 +173,4 @@
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/HiringManager/PostJob.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Admin/AdminIndex.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Login/Signin.cshtml.g.cs
+/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Login/Signup.cshtml.g.cs

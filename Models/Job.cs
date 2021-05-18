@@ -8,6 +8,7 @@ namespace Models.projectModels{
         public string JobDetail {get;set;}
         public string CompanyName { get; set; }
         public string dateTime {get;set;}
+        public string userEmail { get; set; }
         
             
     }

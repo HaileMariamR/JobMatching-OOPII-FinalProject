@@ -15684,6 +15684,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Login/Signup.cshtml",
+      "TargetPath": "Views\\Login\\Signup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Applicants/ApplicantSignup.cshtml",
       "TargetPath": "Views\\Applicants\\ApplicantSignup.cshtml",
       "FileKind": "mvc"

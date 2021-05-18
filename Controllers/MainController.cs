@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
 
-    [Authorize]
+    // [Authorize]
     public class MainController : Controller
     {
         private readonly ILogger<HomeController> _logger;

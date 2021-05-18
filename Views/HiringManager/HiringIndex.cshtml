@@ -1,6 +1,9 @@
 @{
     Layout ="";
 }
+
+@model List<Models.projectModels.Job>
+
 @using System.Security.Claims;
 
 <head>
@@ -14,18 +17,44 @@
     <h1>  
         Hiring Index
     </h1>
-           <li class="nav-item  ">
-                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
-                </li>
-                  <li class="nav-item  ">
-                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
-                </li>
-            <h2>@User.Identity.Name</h2>
+          
+                            <a class="text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
+             
+             
+            @* <h2>@User.Identity.Name</h2> *@
+            <h1>@ViewData["userEmail"]</h1>
 
             <li class="nav-item  ">
                             <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
                 </li>
 
+
+
+
+</div>
+
+<div class="Container">
+
+    
+                       @foreach(var item in Model)
+
+                            {
+
+
+                                <div class="card" style="">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.JobTitle</h5>
+                                <p>@item.JobDetail</p>
+                                <a href="#" class="btn btn-primary">@item.CompanyName</a>
+                                <p>@item.dateTime</p>
+                            </div>
+                            </div>
+                                    
+                             
+                                
+                                
+                    }
 
 
 </div>
