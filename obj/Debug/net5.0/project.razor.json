@@ -15674,6 +15674,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/Resume.cshtml",
+      "TargetPath": "Views\\Main\\Resume.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -15681,6 +15686,11 @@
     {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Home/Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/EditResume.cshtml",
+      "TargetPath": "Views\\Main\\EditResume.cshtml",
       "FileKind": "mvc"
     },
     {

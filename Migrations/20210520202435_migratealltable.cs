@@ -2,7 +2,7 @@
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
-    public partial class firstMigrations : Migration
+    public partial class migratealltable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,8 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                     JobTitle = table.Column<string>(type: "TEXT", nullable: true),
                     JobDetail = table.Column<string>(type: "TEXT", nullable: true),
                     CompanyName = table.Column<string>(type: "TEXT", nullable: true),
-                    dateTime = table.Column<string>(type: "TEXT", nullable: true)
+                    dateTime = table.Column<string>(type: "TEXT", nullable: true),
+                    userEmail = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,7 +36,9 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                     Password = table.Column<string>(type: "TEXT", nullable: true),
                     ConfirmPassword = table.Column<string>(type: "TEXT", nullable: true),
                     ProfilePicture = table.Column<string>(type: "TEXT", nullable: true),
-                    Discriminator = table.Column<string>(type: "TEXT", nullable: false)
+                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
+                    LinkedInLink = table.Column<string>(type: "TEXT", nullable: true),
+                    JobPostion = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

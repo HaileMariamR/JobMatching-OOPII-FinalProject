@@ -8,8 +8,8 @@ using ProjectContext.Data;
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    [Migration("20210517170445_updatejobt")]
-    partial class updatejobt
+    [Migration("20210520202435_migratealltable")]
+    partial class migratealltable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,12 @@ namespace JobMatching_OOPII_FinalProject.Migrations
             modelBuilder.Entity("Models.projectModels.Applicants", b =>
                 {
                     b.HasBaseType("Models.projectModels.User");
+
+                    b.Property<string>("JobPostion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LinkedInLink")
+                        .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue("Applicants");
                 });

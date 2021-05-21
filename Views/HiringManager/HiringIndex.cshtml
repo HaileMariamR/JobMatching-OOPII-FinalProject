@@ -13,31 +13,53 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<div class="text-center m-4 p-4">
-    <h1>  
-        Hiring Index
-    </h1>
-    
-          
-                            <a class="text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
-             
-             
-            @* <h2>@User.Identity.Name</h2> *@
-            <h2>@User.Identity.Name</h2>
-            @* <h1>@Context.Request.Query["userEmailAddress"]</h1> *@
 
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <li class="nav-item  ">
-                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav ">
+                   <li class="nav-item">
+                            <a class="nav-link text-dark btn-outline-primary" >Hiring Index</a>
+
+                        </li>
+                 <li class="nav-item">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="PostJob">PostJob</a>
+
+                        </li>
+                        
+
+                  
+            </ul>
+             <ul class="navbar-nav ml-auto">
+                 <li class="nav-item  pull-right">
+                        <a class="nav-link text-dark btn-outline-primary">recived Applications</a>
                 </li>
+                <li class="nav-item  pull-right">
+                        <a class="nav-link text-dark btn-outline-primary">all Employee</a>
+                </li>
+                   <li class="nav-item  pull-right">
+                        <a class="nav-link text-dark btn-outline-primary">@User.Identity.Name</a>
+                </li>
+                        <li class="nav-item  pull-right">
+                            <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="HiringManager" asp-action="Logout">Logout</a>
+
+                </li>
+            </ul>
+            </div>
+        </div>
+</nav>
 
 
-
-
-</div>
 
 <div class="Container">
 
+
+        <h1>Your Posts</h1>
     
                         @foreach(var item in Model)
 
@@ -49,8 +71,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">@item.JobTitle</h5>
                                 <p>@item.JobDetail</p>
-                                <a href="#" class="btn btn-primary">@item.CompanyName</a>
+                           company Name :     <a href="#" class="">@item.CompanyName</a>
                                 <p>@item.dateTime</p>
+
+                                <a href="">see an employee related to this job</a>
                             </div>
                             </div>
                                     

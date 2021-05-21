@@ -83,6 +83,12 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                 {
                     b.HasBaseType("Models.projectModels.User");
 
+                    b.Property<string>("JobPostion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LinkedInLink")
+                        .HasColumnType("TEXT");
+
                     b.HasDiscriminator().HasValue("Applicants");
                 });
 

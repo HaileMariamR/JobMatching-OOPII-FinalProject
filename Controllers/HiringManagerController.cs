@@ -78,8 +78,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             public IActionResult HiringManagerSignup(HiringManager hiringManager)
         {
 
-                
-                if (ModelState.IsValid){
+            
                     try{
                         
                        
@@ -110,9 +109,9 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                         Console.Write($"Error : {ex.Message}");
 
                     }
-                }
+                
 
-            return View(hiringManager);
+                     return View(hiringManager);
 
         }
 
