@@ -3,9 +3,6 @@
 @using System.Web;
 @using  Microsoft.AspNetCore.Http;
 
-
-
-
 @{
     Layout ="";
 }
@@ -39,7 +36,7 @@
                 </li>
 
                    <li class="nav-item  pull-right">
-                        <a class="nav-link text-dark btn-outline-primary">My Applications   </a>
+                        <a asp-action="EmployeeApplications" asp-asp-controller="Main" class="nav-link text-dark btn-outline-primary">My Applications   </a>
                 </li>
                      <li class="nav-item  pull-right">
                         <a class="nav-link text-dark btn-outline-primary">new post related to ur profile   </a>
@@ -63,7 +60,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>List of avaliable Jobs</h1>
+        <center style="font-size: 30px;">List of avaliable Jobs</center>
     </div>
 </div>
 
@@ -78,30 +75,26 @@
                        @foreach(var item in Model.mainIndexjobs)
 
                             {
+
+
                                   <br><br>
-                            <br><br>
-                            <br><br>
-                            <br><br>
-
-
-                                <div class="card" style="">
-                            <img src="..." class="card-img-top" alt="...">
+                                  <br><br>
+                      
+                    <div class="Container">
+                         <div class="card" style="">
                             <div class="card-body">
-                                <h5 class="card-title">@item.JobTitle</h5>
-                                <a href="">apply</a>
-                                <p>@item.JobDetail</p>
-                                <h1 >@item.CompanyName</h1  >
-                                <p>@item.dateTime</p>
-                            </div>
-                            </div>
-                            <br><br>
-                            <br><br>
-                            <br><br>
-                          
-
-    
-                                    
+                                <h1 class="card-title">@item.JobTitle</h1>
+                                <hr>
+                                <h5 >@item.CompanyName</h5 >
+                                <span>@item.dateTime</span>
+                                <a asp-action="JobDetail" asp-controller="Main" asp-route-jobTitle="@item.JobTitle" asp-route-companyName="@item.CompanyName"  style="float: right;" >view Detail </a>
+                     
                         
+                            </div>
+                         </div>
+                    </div>
+    
+
                                 
                     }
 

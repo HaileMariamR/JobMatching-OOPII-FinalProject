@@ -1,8 +1,10 @@
-@{
-    Layout = "";
-}
-@model Models.projectModels.Applicants;
+@model List<Models.projectModels.EmployeeApplication>;
 
+
+
+@{
+    Layout ="";
+}
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +37,9 @@
                    <li class="nav-item  pull-right">
                         <a class="nav-link text-dark btn-outline-primary">My Applications   </a>
                 </li>
+                     <li class="nav-item  pull-right">
+                        <a class="nav-link text-dark btn-outline-primary">new post related to ur profile   </a>
+                </li>
             
                    <li class="nav-item  pull-right">
                         <a class="nav-link text-dark btn-outline-primary">@User.Identity.Name</a>
@@ -48,26 +53,47 @@
         </div>
 </nav>
 
-<d class="container">
-    <h1>Resume <span><a asp-action="EditResume" asp-controller="Main">Edit Resume</a></span></h1>
 
-    <div class="card">
-        <div class="card-boy">
 
-            <div>
-                <h3>Name : @Model.FullName </h3>
-                <h3>Phone Number : @Model.PhoneNumber</h3>
-                <h3>Email  : @Model.Email</h3>
-            </div>
-            <div>
-                <h3>Job position :@Model.JobPostion </h3>
-            </div>
-            <div>   
-                <h3>LinkedIn Link :<a target="_blank" href="http://@Model.LinkedInLink"> @Model.LinkedInLink</a></h3>
-            </div>
-        </div>
-
+<div class="row">
+    <div class="col-md-12">
+        <h1>List of applications</h1>
     </div>
 
+</div>
+        @if (@Model != null){
 
-    
+        
+
+
+                @foreach(var item in Model)
+
+                    {
+                            <br><br>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+
+
+                        <div class="card" style="">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Jobtitle</h5>
+                        <h1 >@item.ComapanyName</h1  >
+                        <p>@item.EmployeeEmail</p>
+                    </div>
+                    </div>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                        
+            }
+        }
+        else{
+
+            <h1>U havent any application here!</h1>
+        }
+
+
+
+

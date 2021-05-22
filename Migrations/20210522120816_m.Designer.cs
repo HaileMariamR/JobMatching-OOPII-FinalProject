@@ -8,14 +8,34 @@ using ProjectContext.Data;
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    [Migration("20210520202435_migratealltable")]
-    partial class migratealltable
+    [Migration("20210522120816_m")]
+    partial class m
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.6");
+
+            modelBuilder.Entity("Models.projectModels.EmployeeApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ComapanyName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmployeeEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Jobtitle")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("employeeApplications");
+                });
 
             modelBuilder.Entity("Models.projectModels.Job", b =>
                 {
@@ -59,19 +79,13 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("FullName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProfilePicture")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

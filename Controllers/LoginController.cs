@@ -26,13 +26,9 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         }
 
         
-        public IActionResult Signin()
-        {
-            return View();
+       
 
-        }
-
-
+    
         [HttpPost]
          public IActionResult Signin(Login loginvalue)
         {
@@ -84,13 +80,13 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
 
 
-        public IActionResult Signup()
+        public IActionResult Signin()
         {
             return View();
         }
         [HttpPost]
-    
-
+        
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -35,16 +35,6 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             return View(mainIndexModels);
         }
 
-//  [HttpPost]
-//         public IActionResult Edit(Product product)
-//         {
-//             db.Entry(product).State = EntityState.Modified;
-//             db.SaveChanges();
-//             return RedirectToAction("Index");
-//         }
-
-//     }
-// }
 
         public IActionResult Resume(){
              var CurrentEmployeeUser = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
@@ -83,6 +73,52 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             
             return View();
         }
+
+
+        public IActionResult JobDetail(){
+            var jobtitle = HttpContext.Request.Query["JobTitle"].ToString();
+            var companyname=HttpContext.Request.Query["Companyname"].ToString();
+
+            var jobdetail = _database.jobs.Where(x => x.CompanyName == companyname & x.JobTitle ==jobtitle).FirstOrDefault();
+
+            return View(jobdetail);
+        }
+        public IActionResult getEmployeeApplications(){
+
+            return View();
+        }
+
+        public IActionResult EmployeeApplications(){
+
+            var currentEmployee = HttpContext.Request.Query["user"].ToString();
+            var companyName = HttpContext.Request.Query["CompanyName"].ToString();
+            var jobTitle = HttpContext.Request.Query["JobTitle"].ToString();
+            var employee= new EmployeeApplication();
+            employee.ComapanyName = companyName;
+            employee.Jobtitle = jobTitle;
+            employee.EmployeeEmail = currentEmployee;
+       
+           
+            List<EmployeeApplication> currentUserApplications = new List<EmployeeApplication>();
+
+            try{
+                var checkApplication  = _database.employeeApplications.Where(x => x.ComapanyName == companyName && x.EmployeeEmail == currentEmployee).FirstOrDefault();
+                if (checkApplication ==null){
+                    _database.employeeApplications.Add(employee);
+                    _database.SaveChanges();
+                }
+                
+                currentUserApplications = _database.employeeApplications.Where(x=>x.EmployeeEmail == currentEmployee).ToList();
+
+            }catch(Exception ex){
+                Console.Write($"Error : {ex.Message}");
+            }
+            return View(currentUserApplications);
+
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

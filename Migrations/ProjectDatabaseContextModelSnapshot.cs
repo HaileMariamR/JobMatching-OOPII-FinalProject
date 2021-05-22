@@ -15,6 +15,26 @@ namespace JobMatching_OOPII_FinalProject.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.6");
 
+            modelBuilder.Entity("Models.projectModels.EmployeeApplication", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ComapanyName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("EmployeeEmail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Jobtitle")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("employeeApplications");
+                });
+
             modelBuilder.Entity("Models.projectModels.Job", b =>
                 {
                     b.Property<int>("Id")
@@ -57,19 +77,13 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
+                    b.Property<string>("FullName")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProfilePicture")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -2,10 +2,25 @@
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
-    public partial class migratealltable : Migration
+    public partial class m : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "employeeApplications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ComapanyName = table.Column<string>(type: "TEXT", nullable: true),
+                    Jobtitle = table.Column<string>(type: "TEXT", nullable: true),
+                    EmployeeEmail = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_employeeApplications", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "jobs",
                 columns: table => new
@@ -29,13 +44,11 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: true),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
+                    FullName = table.Column<string>(type: "TEXT", nullable: true),
                     PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: true),
                     Password = table.Column<string>(type: "TEXT", nullable: true),
                     ConfirmPassword = table.Column<string>(type: "TEXT", nullable: true),
-                    ProfilePicture = table.Column<string>(type: "TEXT", nullable: true),
                     Discriminator = table.Column<string>(type: "TEXT", nullable: false),
                     LinkedInLink = table.Column<string>(type: "TEXT", nullable: true),
                     JobPostion = table.Column<string>(type: "TEXT", nullable: true)
@@ -48,6 +61,9 @@ namespace JobMatching_OOPII_FinalProject.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "employeeApplications");
+
             migrationBuilder.DropTable(
                 name: "jobs");
 
