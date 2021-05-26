@@ -40,6 +40,8 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         }
 
 
+  
+
         [HttpPost]
         public  IActionResult PostJob(Job job){
              var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
@@ -113,6 +115,20 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
                      return View(hiringManager);
 
+        }
+
+        public IActionResult ApplicationsDashboard(){
+
+             var currentEmployee    = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+             var currentUserjobs = _database.jobs.Where(x =>x.userEmail == currentEmployee.ToString()).FirstOrDefault();
+            //  _logger.LogInformation(currentUserjobs.CompanyName.ToString());
+             var ApplicantsApplications= _database.employeeApplications.
+                                        Where(value => value.ComapanyName ==currentUserjobs.CompanyName ).ToList();
+            
+            if (ApplicantsApplications == null){
+                return View();
+            }
+            return View(ApplicantsApplications);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

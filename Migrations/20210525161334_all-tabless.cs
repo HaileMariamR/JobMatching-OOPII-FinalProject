@@ -2,7 +2,7 @@
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
-    public partial class m : Migration
+    public partial class alltabless : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

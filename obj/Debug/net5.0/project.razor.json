@@ -15634,11 +15634,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/EmployeeApplications.cshtml",
-      "TargetPath": "Views\\Main\\EmployeeApplications.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -15664,6 +15659,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/HiringManager/ApplicationsDashboard.cshtml",
+      "TargetPath": "Views\\HiringManager\\ApplicationsDashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15676,6 +15676,11 @@
     {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/HiringManager/HiringIndex.cshtml",
       "TargetPath": "Views\\HiringManager\\HiringIndex.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/GetEmployeeApplications.cshtml",
+      "TargetPath": "Views\\Main\\GetEmployeeApplications.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15706,6 +15711,11 @@
     {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Applicants/ApplicantSignup.cshtml",
       "TargetPath": "Views\\Applicants\\ApplicantSignup.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/NewjobRelatedtoEmployee.cshtml",
+      "TargetPath": "Views\\Main\\NewjobRelatedtoEmployee.cshtml",
       "FileKind": "mvc"
     }
   ],

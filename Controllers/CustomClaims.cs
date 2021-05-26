@@ -29,6 +29,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
 
 
+
        }
     }
 }

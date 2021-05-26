@@ -50,11 +50,11 @@
             <h2 class="title">Sign in</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-                <input asp-for="Email" type="text" class="form-control required" placeholder="Enter first name" tabindex="1">
+                <input asp-for="Email" type="text" class="form-control required" placeholder="Enter first name" tabindex="1" required>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-                <input asp-for="Password" type="password" class="form-control required" placeholder="Enter last name" tabindex="2">
+                <input asp-for="Password" type="password" class="form-control required" placeholder="Enter last name" tabindex="2" required>
 
             </div>
             <input type="submit" value="Login" class="btn solid" />
@@ -104,8 +104,11 @@
             <p>
               Signup Here If You Don't Have Account.
             </p>
-            <a asp-action="Index" asp-controller="Home" class="btn transparent" id="sign-up-btn">
-              Sign up
+            <a asp-action="ApplicantSignup" asp-controller="Applicants" class="btn transparent" id="sign-up-btn">
+              Register As Employee
+            </a> <br><br><hr>
+              <a asp-action="HiringManagerSignup" asp-controller="HiringManager" class="btn transparent" id="sign-up-btn">
+              Register As HiringManager
             </a>
           </div>
         </div>

@@ -3,8 +3,10 @@
 }
 
 @* @model List<Models.projectModels.Job> *@
+@model List<Models.projectModels.EmployeeApplication>;
 
 @using System.Security.Claims;
+
 
 <head>
     <meta charset="utf-8" />
@@ -24,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav ">
                    <li class="nav-item">
-                            <a class="nav-link text-dark btn-outline-primary" >Hiring Index</a>
+                            <a asp-action="HiringIndex" asp-controller="HiringManager" class="nav-link text-dark btn-outline-primary" >Hiring Index</a>
 
                         </li>
                  <li class="nav-item">
@@ -59,38 +61,41 @@
 <div class="Container">
 
 
-        <h1>Your Posts</h1>
-    
-                        @foreach(var item in Model)
+                    @if (@Model != null){
 
-                            {
+            
 
 
-                                    
+                @foreach(var item in Model)
 
-                                    <div class="Container">
-                         <div class="card" style="">
-                            <div class="card-body">
-                                <h1 class="card-title">@item.JobTitle</h1>
-                                <hr>
-                                <a style="font-size: 2rem;" >@item.CompanyName</a >
-                                <p>@item.JobDetail</p>
-                                <hr>
-                                <span>@item.dateTime</span>
-                                <a style="float: right;" href="">see an employee related to this job</a>
-                     
+                    {
                         
-                            </div>
-                         </div>
+                            <br><br>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+
+
+                        <div class="card" style="">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Jobtitle</h5>
+                        <h1 >@item.ComapanyName</h1  >
+                        <p>@item.EmployeeEmail</p>
                     </div>
-    
-            <br>
-            <br>
-                             
-                                
-                                
-                    } 
-                    
+                    </div>
+                    <br><br>
+                    <br><br>
+                    <br><br>
+                        
+            }
+        }
+        else{
+
+            <h1>u havent any application!</h1>
+        }
+
+
+
 
 
 </div>

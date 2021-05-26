@@ -83,40 +83,74 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
             return View(jobdetail);
         }
-        public IActionResult getEmployeeApplications(){
-
-            return View();
-        }
-
-        public IActionResult EmployeeApplications(){
+        [HttpPost]
+        public IActionResult JobDetail(Job job){
 
             var currentEmployee = HttpContext.Request.Query["user"].ToString();
             var companyName = HttpContext.Request.Query["CompanyName"].ToString();
             var jobTitle = HttpContext.Request.Query["JobTitle"].ToString();
+
             var employee= new EmployeeApplication();
             employee.ComapanyName = companyName;
             employee.Jobtitle = jobTitle;
             employee.EmployeeEmail = currentEmployee;
-       
-           
-            List<EmployeeApplication> currentUserApplications = new List<EmployeeApplication>();
 
-            try{
-                var checkApplication  = _database.employeeApplications.Where(x => x.ComapanyName == companyName && x.EmployeeEmail == currentEmployee).FirstOrDefault();
-                if (checkApplication ==null){
+
+            var checkApplication = _database.employeeApplications
+                                    .Where(x => (x.ComapanyName==companyName) &&
+                                                (x.Jobtitle==jobTitle)&&
+                                                (x.EmployeeEmail ==currentEmployee)
+                                           ).FirstOrDefault();
+
+            if(checkApplication ==null){
+
+                try
+                {
                     _database.employeeApplications.Add(employee);
                     _database.SaveChanges();
-                }
-                
-                currentUserApplications = _database.employeeApplications.Where(x=>x.EmployeeEmail == currentEmployee).ToList();
 
-            }catch(Exception ex){
-                Console.Write($"Error : {ex.Message}");
+                    return RedirectToAction("MainIndex" , "Main");  
+                    
+                }
+                catch(Exception ex){
+                    Console.Write($"{ex.Message}");
+
+                }
+
+
+            }else{
+                // _logger.LogInformation("" + checkApplication..ToString());
+
+                Console.Write(checkApplication);
+                
+                return Content("u have already Applied!");
             }
+
+
+
+
+
+            return View();
+        }
+        public IActionResult GetEmployeeApplications(){
+             var currentEmployee    = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+    
+            var currentUserApplications = _database.employeeApplications.Where(x=>x.EmployeeEmail == currentEmployee.Value.ToString()).ToList();
+      
             return View(currentUserApplications);
 
+         
         }
 
+        public IActionResult NewjobRelatedtoEmployee(){
+             var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+             var currentUser = _database.applicants.Where(x => x.Email == value.Value.ToString()).FirstOrDefault();
+            //  _logger.LogInformation(currentUser.JobPostion.ToString());
+
+            var jobrelatedtocurrentUser = _database.jobs.Where(value =>value.JobTitle == currentUser.JobPostion ).ToList();
+            _logger.LogInformation(jobrelatedtocurrentUser.Count.ToString());
+            return View(jobrelatedtocurrentUser);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

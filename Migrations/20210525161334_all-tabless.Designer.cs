@@ -8,8 +8,8 @@ using ProjectContext.Data;
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    [Migration("20210522120816_m")]
-    partial class m
+    [Migration("20210525161334_all-tabless")]
+    partial class alltabless
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
