@@ -95,6 +95,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             employee.ComapanyName = companyName;
             employee.Jobtitle = jobTitle;
             employee.EmployeeEmail = currentEmployee;
+            employee.DateofApplication = DateTime.Now;
 
 
             var checkApplication = _database.employeeApplications
@@ -150,7 +151,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
             var jobrelatedtocurrentUser = _database.jobs.Where(value =>value.JobTitle == currentUser.JobPostion ).ToList();
             jobrelatedtocurrentUser.Reverse();
-            _logger.LogInformation(jobrelatedtocurrentUser.Count.ToString());
+            // _logger.LogInformation(jobrelatedtocurrentUser.Count.ToString());
             return View(jobrelatedtocurrentUser);
         }
 

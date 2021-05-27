@@ -3,31 +3,63 @@
     Layout ="~/Views/Shared/_MainViewLayout.cshtml";
 
 }
+    <link rel="stylesheet" href="~/css/resume.css" />
+
 @model Models.projectModels.Applicants;
 
+<div style="margin-top:5rem">
 
-
-<div style="margin-top:6rem;" class="">
     <h1>Resume <span><a asp-action="EditResume" asp-controller="Main">Edit Resume</a></span></h1>
 
-    <div class="card">
-        <div class="card-boy">
+            <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
+                    <div class="col-xl-6 col-md-12">
+                        <div class="card user-card-full">
+                            <div class="row m-l-0 m-r-0">
+                                <div class="col-sm-4 bg-c-lite-green user-profile">
+                                    <div class="card-block text-center text-white">
+                                        <div class="m-b-25"> <img src="" class="img-radius" > </div>
+                                        <h6 class="f-w-600"> @Model.FullName </h6>
+                                        <p>@Model.JobPostion </p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="card-block">
+                                        <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Email</p>
+                                                <h6 class="text-muted f-w-400">@Model.Email</h6>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">Phone</p>
+                                                <h6 class="text-muted f-w-400">@Model.PhoneNumber</h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="m-b-10 f-w-600">LinkedInLink</p>
+                        <h6  class="text-muted f-w-400">LinkedIn Link :<a target="_blank" href="@Model.LinkedInLink"> @Model.LinkedInLink</a></h6>
 
-            <div>
-                <h3>Name : @Model.FullName </h3>
-                <h3>Phone Number : @Model.PhoneNumber</h3>
-                <h3>Email  : @Model.Email</h3>
-            </div>
-            <div>
-                <h3>Job position :@Model.JobPostion </h3>
-            </div>
-            <div>   
-                <h3>LinkedIn Link :<a target="_blank" href="@Model.LinkedInLink"> @Model.LinkedInLink</a></h3>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-    </div>
+
+
 </div>
 
 
+
+
+</div>
     

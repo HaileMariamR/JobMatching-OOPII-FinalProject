@@ -3,55 +3,64 @@
     Layout ="~/Views/Shared/_HiringLayout.cshtml";
 
 }
-
-@* @model List<Models.projectModels.Job> *@
 @model List<Models.projectModels.EmployeeApplication>;
 
-@using System.Security.Claims;
 
 
 
 
 
-<div class="Container">
 
-
-                    @if (@Model != null){
-
-            
-
-
-                @foreach(var item in Model)
-
-                    {
-                        
-                            <br><br>
-                    <br><br>
-                    <br><br>
-                    <br><br>
-
-
-                        <div class="card" style="">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Jobtitle</h5>
-                        <h1 >@item.ComapanyName</h1  >
-                        <p>@item.EmployeeEmail</p>
-                    </div>
-                    </div>
-                    <br><br>
-                    <br><br>
-                    <br><br>
-                        
-            }
-        }
-        else{
-
-            <h1>u havent any application!</h1>
-        }
-
-
-
-
+<div style="margin-top:5rem" class="row">
+    <div class="col-md-12">
+        <h1>List of recived application</h1>
+    </div>
 
 </div>
 
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>ComapanyName</td>
+                    <td>Jobtitle</td>
+                    <td>DateofApplication</td>
+                    <td>View Applicant</td>
+                </tr>
+            </thead>
+            <tbody>
+
+         @if (@Model != null){
+
+                    var count = 1;
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.ComapanyName</td>
+                            <td>@item.Jobtitle</td>
+                            <td>@item.DateofApplication</td>
+                            <td>
+                                <a href="" style="color:blue">
+                                    <img style="width:2rem;;" src="~/image/el.png">
+                                </a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+               }
+        else{
+
+            <h1>U havent any application here!</h1>
+        }
+
+            </tbody>
+        </table>
+    </div>
+</div>

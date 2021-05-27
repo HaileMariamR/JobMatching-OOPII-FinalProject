@@ -9,7 +9,7 @@
 }
 
 
-<div class="row">
+<div style="margin-top:5rem"  class="row">
     <div class="col-md-12">
         <h1>all application related to ur profile</h1>
     </div>
@@ -27,27 +27,62 @@
 
                     {
                         
-                            <br><br>
-                    <br><br>
-                    <br><br>
-                    <br><br>
+                        
 
-
-                        <div class="card" style="">
+                        <div class="card"  style="width:1000px ; margin-left : 200px" style="">
                     <div class="card-body">
-                        <h5 class="card-title">@item.JobTitle</h5>
-                        <h1 >@item.CompanyName</h1  >
+                        <h3 class="card-title">@item.JobTitle
+                        <img style="float:right" src="a.jpg">   <br>   
+
+                        </h3>
+                        <a href="" >CompanyName :  @item.CompanyName</a >
+
+                        <hr>
+
+                                    <br>
+                                    <br>
+                                
+                                    <p>@item.JobDetail</p>
+
+                                    <br>
+                                
+
+                                <table style="width:100%">
+                                <tr>
+                                    <th>Job Type</th>
+                                    <th>Salary Range</th>
+                                </tr>
+                                <tr>
+                                    <td>Permanent</td>
+                                    <td>$500 - $600</td>
+                                </tr>
+                             
+                            
+                                </table>
+                                <br><br>
+
+
+
+
+                        <hr>
+
+                        <span><a style="text-decoration: none;" href=""> post date: @item.dateTime</a></span>
+                                <form action="JobDetail" method="POST">
+                                    <button style="float: right;"  type="submit"
+                                    asp-route-user="@User.Identity.Name"
+                                    asp-route-jobTitle="@item.JobTitle" 
+                                    asp-route-companyName="@item.CompanyName" class="btn btn-outline-primary"> Apply </button>
+                            </form>
+                                
+                
                     </div>
-                    </div>
-                    <br><br>
-                    <br><br>
-                    <br><br>
+                </div>
                         
             }
         }
         else{
 
-            <h1>U havent any application here!</h1>
+            <h1>There is no Jobs related to ur profile!</h1>
         }
 
 
