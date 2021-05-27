@@ -1,15 +1,14 @@
 @model Models.projectModels.Job;
 
 @{
-    Layout="";
+ 
+    Layout ="~/Views/Shared/_HiringLayout.cshtml";
+
+
+
 }
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] | Job-matching</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
+<div style="margin-top: 6rem;">
+
 <h1>Post Job</h1>
 <form asp-action="PostJob" asp-area="" method="post">
     <div class="row">
@@ -24,15 +23,9 @@
             </div> 
         
              <div class="form-group">
-                <label>Comapany:</label>
+                <label>Comapany Name:</label>
                 <input asp-for="CompanyName" type="text" class="form-control required" placeholder="Enter Comapny name" tabindex="4">
-            </div>
-
-             <div class="form-group">
-                <label>DateTime:</label>
-                <input asp-for="dateTime" type="text" class="form-control required" placeholder="Date" tabindex="4">
-            </div>
-             
+            </div>             
             <div class="form-group">
                 <div asp-validation-summary="All" class="text-danger"></div>
             </div>
@@ -44,3 +37,5 @@
         </div>
     </div>
 </form>
+
+</div>

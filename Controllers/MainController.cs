@@ -30,9 +30,10 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         public IActionResult MainIndex()
         {
             var allJobs = _database.jobs.ToList();
-            MainIndexModels mainIndexModels = new MainIndexModels();
-            mainIndexModels.mainIndexjobs = allJobs;
-            return View(mainIndexModels);
+            allJobs.Reverse();
+            
+            _logger.LogInformation(allJobs.ToString());
+            return View(allJobs);
         }
 
 
@@ -78,9 +79,9 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         public IActionResult JobDetail(){
             var jobtitle = HttpContext.Request.Query["JobTitle"].ToString();
             var companyname=HttpContext.Request.Query["Companyname"].ToString();
-
             var jobdetail = _database.jobs.Where(x => x.CompanyName == companyname & x.JobTitle ==jobtitle).FirstOrDefault();
-
+            var numberofApplicants = _database.employeeApplications.Where(x => x.ComapanyName == companyname && x.Jobtitle ==jobtitle).ToList();
+            ViewData["NumberofApplicants"] = numberofApplicants.Count.ToString();
             return View(jobdetail);
         }
         [HttpPost]
@@ -148,6 +149,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             //  _logger.LogInformation(currentUser.JobPostion.ToString());
 
             var jobrelatedtocurrentUser = _database.jobs.Where(value =>value.JobTitle == currentUser.JobPostion ).ToList();
+            jobrelatedtocurrentUser.Reverse();
             _logger.LogInformation(jobrelatedtocurrentUser.Count.ToString());
             return View(jobrelatedtocurrentUser);
         }

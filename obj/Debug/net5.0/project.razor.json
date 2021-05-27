@@ -15644,6 +15644,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/_HiringLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_HiringLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Shared/_MainViewLayout.cshtml",
+      "TargetPath": "Views\\Shared\\_MainViewLayout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/Views/Main/MainIndex.cshtml",
       "TargetPath": "Views\\Main\\MainIndex.cshtml",
       "FileKind": "mvc"

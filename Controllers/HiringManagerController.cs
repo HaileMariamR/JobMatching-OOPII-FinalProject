@@ -48,7 +48,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
             if(ModelState.IsValid){
                 try{    
-                 
+                    job.dateTime = DateTime.Now;
                     job.userEmail = value.ToString();
                     _database.jobs.Add(job);
                      _database.SaveChanges();
@@ -66,7 +66,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
              var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
             
             
-             var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == value.ToString());
+             var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == value.ToString()).ToList();
              if (alljobsRelatedtoCurrentuser == null){
                  return View();
              }

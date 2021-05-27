@@ -179,3 +179,5 @@
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Main/GetEmployeeApplications.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/HiringManager/ApplicationsDashboard.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Main/NewjobRelatedtoEmployee.cshtml.g.cs
+/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Shared/_MainViewLayout.cshtml.g.cs
+/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Shared/_HiringLayout.cshtml.g.cs

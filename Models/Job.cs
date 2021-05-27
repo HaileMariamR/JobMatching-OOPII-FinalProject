@@ -1,3 +1,4 @@
+using System;
 
 namespace Models.projectModels{
 
@@ -6,12 +7,12 @@ namespace Models.projectModels{
         public int Id {get;set;}
         public string JobTitle   { get; set; }
         public string JobDetail {get;set;}
+        public DateTime dateTime {get;set;}
         public string CompanyName { get; set; }
-        public string dateTime {get;set;}
         public string userEmail { get; set; }
         
         
- 
+        
             
     }
 

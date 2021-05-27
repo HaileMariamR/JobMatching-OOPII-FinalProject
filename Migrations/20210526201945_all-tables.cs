@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
-    public partial class alltabless : Migration
+    public partial class alltables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,8 +30,8 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     JobTitle = table.Column<string>(type: "TEXT", nullable: true),
                     JobDetail = table.Column<string>(type: "TEXT", nullable: true),
+                    dateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CompanyName = table.Column<string>(type: "TEXT", nullable: true),
-                    dateTime = table.Column<string>(type: "TEXT", nullable: true),
                     userEmail = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
