@@ -14,16 +14,19 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+
+
+
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
     public class CustomClaims : Controller
     {
        
-       public  void addAuthentication(User currentUser){
+       public  void addAuthentication(String currentUser){
 
 
             var userIdentity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.Name , currentUser.Email)
+                new Claim(ClaimTypes.Name , currentUser)
             } , CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(userIdentity);
             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);

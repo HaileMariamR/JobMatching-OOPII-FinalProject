@@ -22,7 +22,7 @@
                 <div class="card"  style="width:1000px ; margin-left : 200px" style="">
                     <div class="card-body">
                         <h3 class="card-title">@Model.JobTitle
-                        <img style="float:right" src="a.jpg">   <br>   
+                        <img style="float:right" src=$"{@Model.CompanyNameLogo}">   <br>   
 
                         </h3>
                         <a href="" >CompanyName :  @Model.CompanyName</a >
@@ -43,8 +43,8 @@
                                     <th>Salary Range</th>
                                 </tr>
                                 <tr>
-                                    <td>Permanent</td>
-                                    <td>$500 - $600</td>
+                                    <td>@Model.JobType</td>
+                                    <td>$@Model.SalaryRange</td>
                                 </tr>
                              
                             

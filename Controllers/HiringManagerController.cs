@@ -49,8 +49,11 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             if(ModelState.IsValid){
                 try{    
                     job.dateTime = DateTime.Now;
+                 
                     job.userEmail = value.ToString();
+                 
                     _database.jobs.Add(job);
+                 
                      _database.SaveChanges();
                     return RedirectToAction("HiringIndex" , "HiringManager");
                     
@@ -67,9 +70,11 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             
             
              var alljobsRelatedtoCurrentuser = _database.jobs.Where(x => x.userEmail == value.ToString()).ToList();
+           
              if (alljobsRelatedtoCurrentuser == null){
                  return View();
              }
+             alljobsRelatedtoCurrentuser.Reverse();
             return View(alljobsRelatedtoCurrentuser);
         }   
         public IActionResult HiringManagerSignup()
@@ -85,15 +90,20 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                         
                        
                         var hiringmanager_one = _database.hiringManagers.Where(value =>value.Email == hiringManager.Email).FirstOrDefault();
+                      
                         if (hiringmanager_one == null){
                             
                                 _database.hiringManagers.Add(hiringManager);
                              _database.SaveChanges();
                             
                                    var userIdentity = new ClaimsIdentity(new[] {
+                             
                                 new Claim(ClaimTypes.Name , hiringManager.Email)
+                           
                             } , CookieAuthenticationDefaults.AuthenticationScheme);
+                          
                             var principal = new ClaimsPrincipal(userIdentity);
+                         
                             var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
 
                            
@@ -120,16 +130,89 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         public IActionResult ApplicationsDashboard(){
 
              var currentEmployee    = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
-             var currentUserjobs = _database.jobs.Where(x =>x.userEmail == currentEmployee.ToString()).FirstOrDefault();
             //  _logger.LogInformation(currentUserjobs.CompanyName.ToString());
-             var ApplicantsApplications= _database.employeeApplications.
-                                        Where(value => value.ComapanyName ==currentUserjobs.CompanyName ).ToList();
+  
+         var ApplicantsApplications= _database.employeeApplications.
+                                        Where(value => value.jobOwnerEmail ==currentEmployee.ToString()).ToList();
             
             if (ApplicantsApplications == null){
                 return View();
             }
+
+            _logger.LogInformation(ApplicantsApplications.ToString());
+           
+            ApplicantsApplications.Reverse();
+          
             return View(ApplicantsApplications);
         }
+
+        public IActionResult ViewApplicant(){
+
+            //  var jobtitle = HttpContext.Request.Query["jTitle"].ToString();
+          
+            // var companyname=HttpContext.Request.Query["companyName"].ToString();
+            var employeeEmail=HttpContext.Request.Query["EmployeeEmail"].ToString();
+
+             var jobtitle = HttpContext.Request.Query["jTitle"].ToString();
+             var companyname=HttpContext.Request.Query["companyName"].ToString();
+
+                ViewData["jobtitle"] =jobtitle;
+                ViewData["companyname"] =companyname;
+                ViewData["EmployeeEmail"] =employeeEmail;
+
+
+        
+            var employeeInfo = _database.users.Where(value => value.Email==employeeEmail).FirstOrDefault();
+            
+            if(employeeInfo == null){
+                return View();
+            }
+            return View(employeeInfo);
+        }
+
+        [HttpPost]
+            public IActionResult ViewApplicant(String Accept , String Reject){
+
+
+             var jobtitle = HttpContext.Request.Query["jobtitle"].ToString();
+             var companyname=HttpContext.Request.Query["companyname"].ToString();
+             var employeeEmail=HttpContext.Request.Query["emploeeEmail"].ToString();
+
+
+
+
+                if(!string.IsNullOrEmpty(Accept))
+                {
+                      
+                      var checkApplication = _database.employeeApplications
+                                
+                                    .Where(x => (x.ComapanyName==companyname) &&
+                                    
+                                                (x.Jobtitle==jobtitle)&&
+                                   
+                                                (x.EmployeeEmail ==employeeEmail)
+                               
+                                           ).FirstOrDefault();
+                        if (checkApplication != null){
+
+                            checkApplication.status = true;      
+                            _logger.LogInformation(checkApplication.status.ToString());             
+
+                            _database.SaveChanges();
+                        }
+
+                    
+
+                }
+                if (!string.IsNullOrEmpty(Reject))
+                {
+                    _logger.LogInformation(Reject);
+
+                }
+         
+            return RedirectToAction("ApplicationsDashboard" , "HiringManager");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

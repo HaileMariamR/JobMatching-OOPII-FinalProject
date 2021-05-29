@@ -10,8 +10,9 @@ namespace Models.projectModels{
         public DateTime dateTime {get;set;}
         public string CompanyName { get; set; }
         public string userEmail { get; set; }
-        
-        
+        public string CompanyNameLogo {get;set;}
+        public string JobType {get;set;}
+        public decimal SalaryRange {get;set;}
         
             
     }

@@ -8,6 +8,8 @@ namespace Models.projectModels{
                 public string ComapanyName { get; set; }
                 public string Jobtitle { get; set; }
                 public string EmployeeEmail { get; set; }
+                public bool status {get;set;}
+                public string jobOwnerEmail {get;set;}
                 public DateTime DateofApplication {get;set;}
 
         

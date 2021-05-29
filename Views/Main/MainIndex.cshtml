@@ -8,6 +8,7 @@
 }
 
 <link rel="stylesheet" href="~/css/search.css" />
+
     
 
 <div class="">
@@ -18,7 +19,7 @@
                 <div class="search">
                     <h5>Search jobs</h5>
                     <div>
-                    <input type="text" placeholder="Search . . ." >
+                    <input id="search" type="text" placeholder="Search . . ." >
                     </div>
                 </div>
             </div>
@@ -40,7 +41,7 @@
 
 
             <div class="row">
-                <div class="col-md-12" >
+                <div  class="col-md-12" >
                 
                                 @{
                                     
@@ -48,36 +49,31 @@
                                 @foreach(var item in Model)
 
                                         {
+                                        
 
-
-                                            <br><br>
-                                            <br><br>
                                 
-                                <div class="Container">
+                                <div style="margin-top:1rem" class="Container main">
                                     <div class="card" style="">
                                         <div class="card-body">
-                                            <h3 class="card-title">@item.JobTitle
-                                            <img style="float:right" src="a.jpg">   <br>   
-
+                                            <h3 class="card-title x">@item.JobTitle
                                             </h3>
                                             <a href="" >CompanyName :  @item.CompanyName</a >
 
                                             <hr>
 
-                                         
-
-                                                    <table style="width:100%">
-                                                    <tr>
-                                                        <th>Job Type</th>
-                                                        <th>Salary Range</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Permanent</td>
-                                                        <td>$500 - $600</td>
-                                                    </tr>
-                                               
-                                                    </table>
-                                        
+                                          <table style="width:100%">
+                                                <tr>
+                                                    <th>Job Type</th>
+                                                    <th>Salary Range</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>@item.JobType</td>
+                                                    <td>$@item.SalaryRange</td>
+                                                </tr>
+                                            
+                                            
+                                                </table>
+                                                        
                                        
 
 
@@ -106,3 +102,6 @@
     </div>
 
 </div>
+
+
+    <script src="~/js/search.js" asp-append-version="true"></script>

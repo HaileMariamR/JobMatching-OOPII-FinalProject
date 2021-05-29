@@ -1,0 +1,79 @@
+
+@model Models.projectModels.EmployeeApplication;
+
+@{
+    Layout ="~/Views/Shared/_MainViewLayout.cshtml";
+}
+
+
+<div style="margin-top: 5rem;" >
+        <h1 style="text-align: center;">Application Detail</h1>
+        <div style="margin-top:1rem" class="Container">
+       
+            <div class="row">
+                <div class="col-md-6">
+                    Job Title
+
+                </div>
+                <div class="col-md-6">
+                    @Model.Jobtitle
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    Company Name
+
+                </div>
+                <div class="col-md-6">
+                    @Model.ComapanyName
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    Date of Application
+
+                </div>
+                <div class="col-md-6">
+                    @Model.DateofApplication
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    Status
+
+                </div>
+                <div class="col-md-6">
+                    @if (!@Model.status){
+                      <a style="text-decoration: none;" href="">pending....</a>
+                    }
+                    else{
+                    <a style="text-decoration: none;" href="">Accepted</a>
+                    }
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    Number of applicants 
+
+                </div>
+                <div class="col-md-6">
+                     @ViewData["NumberofApplicants"]
+
+                </div>
+            </div>
+
+           
+                        
+
+        </div>
+
+</div>

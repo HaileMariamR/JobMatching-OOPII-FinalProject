@@ -33,13 +33,16 @@ namespace JobMatching_OOPII_FinalProject.Controllers
             allJobs.Reverse();
             
             _logger.LogInformation(allJobs.ToString());
+         
             return View(allJobs);
         }
 
 
         public IActionResult Resume(){
              var CurrentEmployeeUser = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+           
              var UserInfo = _database.applicants.Where(x => x.Email == CurrentEmployeeUser.Value.ToString()).FirstOrDefault();
+           
              if (UserInfo == null){
                  return View();
              }
@@ -61,6 +64,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     var UserInfo = _database.applicants.Where(x => x.Email == CurrentEmployeeUser.Value.ToString()).FirstOrDefault();
 
                     UserInfo.JobPostion = applicantsResume.JobPostion;
+                  
                     UserInfo.LinkedInLink = applicantsResume.LinkedInLink;
                     _database.SaveChanges();
 
@@ -78,9 +82,13 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
         public IActionResult JobDetail(){
             var jobtitle = HttpContext.Request.Query["JobTitle"].ToString();
+          
             var companyname=HttpContext.Request.Query["Companyname"].ToString();
+           
             var jobdetail = _database.jobs.Where(x => x.CompanyName == companyname & x.JobTitle ==jobtitle).FirstOrDefault();
+           
             var numberofApplicants = _database.employeeApplications.Where(x => x.ComapanyName == companyname && x.Jobtitle ==jobtitle).ToList();
+          
             ViewData["NumberofApplicants"] = numberofApplicants.Count.ToString();
             return View(jobdetail);
         }
@@ -88,20 +96,32 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         public IActionResult JobDetail(Job job){
 
             var currentEmployee = HttpContext.Request.Query["user"].ToString();
+          
             var companyName = HttpContext.Request.Query["CompanyName"].ToString();
+          
             var jobTitle = HttpContext.Request.Query["JobTitle"].ToString();
 
+            var getJobOwnerEmail = _database.jobs.Where(x=>x.CompanyName == companyName && x.JobTitle ==jobTitle).FirstOrDefault();
+
             var employee= new EmployeeApplication();
+           
             employee.ComapanyName = companyName;
+          
             employee.Jobtitle = jobTitle;
+           
             employee.EmployeeEmail = currentEmployee;
+          
             employee.DateofApplication = DateTime.Now;
-
-
+            employee.jobOwnerEmail = getJobOwnerEmail.userEmail;
+            
             var checkApplication = _database.employeeApplications
+                                
                                     .Where(x => (x.ComapanyName==companyName) &&
+                                    
                                                 (x.Jobtitle==jobTitle)&&
+                                   
                                                 (x.EmployeeEmail ==currentEmployee)
+                               
                                            ).FirstOrDefault();
 
             if(checkApplication ==null){
@@ -109,12 +129,14 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                 try
                 {
                     _database.employeeApplications.Add(employee);
+             
                     _database.SaveChanges();
 
                     return RedirectToAction("MainIndex" , "Main");  
                     
                 }
                 catch(Exception ex){
+               
                     Console.Write($"{ex.Message}");
 
                 }
@@ -144,16 +166,42 @@ namespace JobMatching_OOPII_FinalProject.Controllers
          
         }
 
+
+
+
         public IActionResult NewjobRelatedtoEmployee(){
              var value = ((ClaimsIdentity)User.Identity).FindFirst(ClaimTypes.Name);
+           
              var currentUser = _database.applicants.Where(x => x.Email == value.Value.ToString()).FirstOrDefault();
             //  _logger.LogInformation(currentUser.JobPostion.ToString());
 
             var jobrelatedtocurrentUser = _database.jobs.Where(value =>value.JobTitle == currentUser.JobPostion ).ToList();
+           
             jobrelatedtocurrentUser.Reverse();
             // _logger.LogInformation(jobrelatedtocurrentUser.Count.ToString());
             return View(jobrelatedtocurrentUser);
         }
+
+        public IActionResult ApplicationDetail(){
+
+             var jobtitle = HttpContext.Request.Query["jTitle"].ToString();
+          
+            var companyname=HttpContext.Request.Query["cName"].ToString();
+           
+           
+            var ApplicationDetail = _database.employeeApplications.Where(x => x.ComapanyName == companyname && x.Jobtitle ==jobtitle).ToList();
+            ViewData["NumberofApplicants"] = ApplicationDetail.Count.ToString();
+
+            var application = _database.employeeApplications.Where(x => x.ComapanyName == companyname && x.Jobtitle ==jobtitle).FirstOrDefault();
+
+            
+            return View(application);
+            
+        }
+
+
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

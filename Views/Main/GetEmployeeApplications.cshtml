@@ -30,6 +30,8 @@
                     <td>ComapanyName</td>
                     <td>Jobtitle</td>
                     <td>DateofApplication</td>
+                    <td>status</td>
+
                     <td>View Application</td>
                 </tr>
             </thead>
@@ -47,7 +49,16 @@
                             <td>@item.Jobtitle</td>
                             <td>@item.DateofApplication</td>
                             <td>
-                                <a href="" style="color:blue">
+                                @if (!@item.status){
+                                <a style="text-decoration: none;" href="">pending....</a>
+                                }
+                                else{
+                                <a style="text-decoration: none;" href="">Accepted</a>
+                                }
+
+                            </td>
+                            <td>
+                                <a  asp-action="ApplicationDetail"  asp-controller="Main" asp-route-cName="@item.ComapanyName" asp-route-jTitle="@item.Jobtitle" style="color:blue">
                                     <img style="width:2rem;;" src="~/image/el.png">
                                 </a>
                             </td>

@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectContext.Data;
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    partial class ProjectDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210528112347_updatejob")]
+    partial class updatejob
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,12 +35,6 @@ namespace JobMatching_OOPII_FinalProject.Migrations
 
                     b.Property<string>("Jobtitle")
                         .HasColumnType("TEXT");
-
-                    b.Property<string>("jobOwnerEmail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("status")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -63,13 +59,13 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                     b.Property<string>("JobTitle")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("JobType")
-                        .HasColumnType("TEXT");
-
                     b.Property<decimal>("SalaryRange")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("dateTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("jobType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("userEmail")

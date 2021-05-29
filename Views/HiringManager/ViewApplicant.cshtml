@@ -1,0 +1,92 @@
+@{
+    
+    Layout ="~/Views/Shared/_HiringLayout.cshtml";
+
+}
+@using Microsoft.AspNetCore.Http;
+
+@model Models.projectModels.Applicants;
+
+
+
+<div style="margin-top:5rem" class="row">
+    <div class="col-md-12">
+        <h1>Applicant Detail</h1>
+    </div>
+
+</div>
+
+<br>
+
+@if(Model!=null){
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Full Name : </h3>
+            </div>
+            <div class="col-md-6">
+                <h3>@Model.FullName </h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Phone Number : </h3>
+            </div>
+            <div class="col-md-6">
+                <h3>@Model.PhoneNumber </h3>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Email Address : </h3>
+
+            </div>
+            <div class="col-md-6">
+                <h3>@Model.Email </h3>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>See Employee skills on Linkded In : </h3>
+            </div>
+            <div class="col-md-6">
+                <a target="_blank" href="@Model.LinkedInLink">@Model.LinkedInLink</a> 
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <form action="ViewApplicant" method="POST">
+                    <input class="btn btn-primary"   asp-action="ViewApplicant" asp-controller="HiringManager"
+                    asp-route-companyname='@ViewData["companyname"]'
+                    asp-route-emploeeEmail='@ViewData["EmployeeEmail"]'
+                    asp-route-jobtitle='@ViewData["jobtitle"]'
+                    type="submit"
+                     name="Accept" value="Accept" />
+                    <input class="btn btn-primary" type="submit" name="Reject" value="Reject">
+                </form>
+            </div>
+          
+
+        </div>
+        
+        
+        
+        
+    </div>
+
+}
+
+
+    <script src="~/js/btn.js" asp-append-version="true"></script>

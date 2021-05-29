@@ -26,7 +26,6 @@
             <thead>
                 <tr>
                     <td>#</td>
-                    <td>ComapanyName</td>
                     <td>Jobtitle</td>
                     <td>DateofApplication</td>
                     <td>View Applicant</td>
@@ -42,11 +41,15 @@
                     {
                         <tr>
                             <td>@count</td>
-                            <td>@item.ComapanyName</td>
                             <td>@item.Jobtitle</td>
                             <td>@item.DateofApplication</td>
                             <td>
-                                <a href="" style="color:blue">
+                                <a asp-action="ViewApplicant" asp-controller="HiringManager" 
+
+                                 asp-route-jTitle="@item.Jobtitle" 
+                                 asp-route-EmployeeEmail="@item.EmployeeEmail" 
+                                 asp-route-companyName = "@item.ComapanyName"
+                                 style="color:blue">
                                     <img style="width:2rem;;" src="~/image/el.png">
                                 </a>
                             </td>

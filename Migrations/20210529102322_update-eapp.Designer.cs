@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectContext.Data;
 
 namespace JobMatching_OOPII_FinalProject.Migrations
 {
     [DbContext(typeof(ProjectDatabaseContext))]
-    partial class ProjectDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210529102322_update-eapp")]
+    partial class updateeapp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +34,6 @@ namespace JobMatching_OOPII_FinalProject.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Jobtitle")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("jobOwnerEmail")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("status")
