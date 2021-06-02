@@ -14,10 +14,12 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using SweetAlertEnum;
+
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
-    public class HiringManagerController : Controller
+    public class HiringManagerController : CustomClaims
     {
         private readonly ILogger<HomeController> _logger;
         private ProjectDatabaseContext _database;
@@ -55,6 +57,8 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     _database.jobs.Add(job);
                  
                      _database.SaveChanges();
+                    Alert(NotificationType.success , "You have Post a jobz" , "Posted!");
+
                     return RedirectToAction("HiringIndex" , "HiringManager");
                     
                 }
@@ -96,22 +100,25 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                                 _database.hiringManagers.Add(hiringManager);
                              _database.SaveChanges();
                             
-                                   var userIdentity = new ClaimsIdentity(new[] {
+                            //        var userIdentity = new ClaimsIdentity(new[] {
                              
-                                new Claim(ClaimTypes.Name , hiringManager.Email)
+                            //     new Claim(ClaimTypes.Name , hiringManager.Email)
                            
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            // } , CookieAuthenticationDefaults.AuthenticationScheme);
                           
-                            var principal = new ClaimsPrincipal(userIdentity);
+                            // var principal = new ClaimsPrincipal(userIdentity);
                          
-                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
-
+                            // var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+                            addAuthentication(hiringManager.Email);
+                             Alert(NotificationType.success , "You have successfully Registered  as Hiring Manager" , "Registerd!");
                            
                              return RedirectToAction("HiringIndex" , "HiringManager" , new {userEmailAdress=hiringManager.Email.ToString()});
 
             
                         }else{
-                            return Content("user already exist!");
+                            Alert(NotificationType.info , "The user  has already registered!" , "Sorry!");
+
+                            return RedirectToAction("HiringManagerSignup" , "HiringManager");
                         
                         }
  
@@ -199,6 +206,8 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                             _logger.LogInformation(checkApplication.status.ToString());             
 
                             _database.SaveChanges();
+                            Alert(NotificationType.success , $"You have recieved the application of {employeeEmail}" , "Recived Application!");
+
                         }
 
                     

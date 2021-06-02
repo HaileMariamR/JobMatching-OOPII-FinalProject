@@ -183,3 +183,4 @@
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Shared/_HiringLayout.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Main/ApplicationDetail.cshtml.g.cs
 /home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/HiringManager/ViewApplicant.cshtml.g.cs
+/home/eharry/Documents/Projects/JobMatching-OOPII-FinalProject/obj/Debug/net5.0/Razor/Views/Shared/_alertPage.cshtml.g.cs

@@ -11,11 +11,13 @@ using Microsoft.AspNetCore.Authorization;
 using Models.projectModels;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using SweetAlertEnum;
+
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
 
     // [Authorize]
-    public class MainController : Controller
+    public class MainController : CustomClaims
     {
         private readonly ILogger<HomeController> _logger;
         private ProjectDatabaseContext _database;
@@ -67,6 +69,7 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                   
                     UserInfo.LinkedInLink = applicantsResume.LinkedInLink;
                     _database.SaveChanges();
+
 
                     return RedirectToAction("Resume" , "Main");
                     
@@ -131,6 +134,10 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     _database.employeeApplications.Add(employee);
              
                     _database.SaveChanges();
+                   Alert(NotificationType.success , $"You have successfully Applied for {jobTitle} @ {companyName} " , "Successfully Applied!");
+
+
+                    
 
                     return RedirectToAction("MainIndex" , "Main");  
                     

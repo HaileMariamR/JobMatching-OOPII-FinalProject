@@ -11,6 +11,7 @@
 
     
 
+
 <div class="">
     <div class="row">
         <br><br>
@@ -105,3 +106,7 @@
 
 
     <script src="~/js/search.js" asp-append-version="true"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

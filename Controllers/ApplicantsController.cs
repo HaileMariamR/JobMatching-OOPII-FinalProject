@@ -11,13 +11,14 @@ using Microsoft.EntityFrameworkCore;
 using ProjectContext.Data;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using SweetAlertEnum;
 
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
-    public class ApplicantsController : Controller
+    public class ApplicantsController : CustomClaims
     {
         private readonly ILogger<HomeController> _logger;
         private ProjectDatabaseContext _database;
@@ -48,13 +49,14 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                                 _database.applicants.Add(applicants);
                              _database.SaveChanges();
                             
-                             var userIdentity = new ClaimsIdentity(new[] {
-                                new Claim(ClaimTypes.Name , applicants.Email)
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
-                            var principal = new ClaimsPrincipal(userIdentity);
-                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+                            //  var userIdentity = new ClaimsIdentity(new[] {
+                            //     new Claim(ClaimTypes.Name , applicants.Email)
+                            // } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            // var principal = new ClaimsPrincipal(userIdentity);
+                            // var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
 
-                           
+                           addAuthentication(applicants.Email);
+                            Alert(NotificationType.success , "You have successfully Registerd as Applicant" , "Registered!");
                            
                              return RedirectToAction("MainIndex" , "Main" , new {userEmailAddress=applicants.Email.ToString()});
 

@@ -12,13 +12,12 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using SweetAlertEnum;
 
 namespace JobMatching_OOPII_FinalProject.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : CustomClaims 
     {
-
         private ProjectDatabaseContext _database;
         public LoginController(ProjectDatabaseContext projectdatabasecontext){
             _database =projectdatabasecontext;
@@ -26,10 +25,6 @@ namespace JobMatching_OOPII_FinalProject.Controllers
         }
         
 
-        
-       
-
-    
         [HttpPost]
          public IActionResult Signin(Login loginvalue)
         {
@@ -44,13 +39,14 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                 
                 if((userApplicant.Email.ToString()==loginvalue.Email) & (userApplicant.Password.ToString()== loginvalue.Password)){
                         
-                            var userIdentity = new ClaimsIdentity(new[] {
-                                new Claim(ClaimTypes.Name , userApplicant.Email)
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
-                            var principal = new ClaimsPrincipal(userIdentity);
-                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
-
-
+                            // var userIdentity = new ClaimsIdentity(new[] {
+                            //     new Claim(ClaimTypes.Name , userApplicant.Email)
+                            // } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            // var principal = new ClaimsPrincipal(userIdentity);
+                            // var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+                            addAuthentication(userApplicant.Email.ToString());
+                            Alert(NotificationType.success , "You have successfully logged in as Applicant" , "LoggedIn!");
+                           //Alert("You have successfully logged in as Applicant" , NotificationType.success);
                              return RedirectToAction("MainIndex" , "Main");
                 }
             }
@@ -59,12 +55,14 @@ namespace JobMatching_OOPII_FinalProject.Controllers
 
 
                                
-                            var userIdentity = new ClaimsIdentity(new[] {
-                                new Claim(ClaimTypes.Name , hiringmanager_one.Email)
-                            } , CookieAuthenticationDefaults.AuthenticationScheme);
-                            var principal = new ClaimsPrincipal(userIdentity);
-                            var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
+                            // var userIdentity = new ClaimsIdentityz(new[] {
+                            //     new Claim(ClaimTypes.Name , hiringmanager_one.Email)
+                            // } , CookieAuthenticationDefaults.AuthenticationScheme);
+                            // var principal = new ClaimsPrincipal(userIdentity);
+                            // var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme , principal);
 
+                            addAuthentication(hiringmanager_one.Email.ToString());
+                            Alert(NotificationType.success , "You have successfully logged in as Hiring Manager" , "LoggedIn!");
 
                              return RedirectToAction("HiringIndex" , "HiringManager");
 
