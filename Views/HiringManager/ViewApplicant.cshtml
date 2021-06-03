@@ -24,45 +24,61 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-6">
-                <h3>Full Name : </h3>
-            </div>
-            <div class="col-md-6">
-                <h3>@Model.FullName </h3>
-            </div>
+            
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            @Model.FullName
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            @Model.Email
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            @Model.PhoneNumber
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Linkded In Link</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                <a target="_blank" href="@Model.LinkedInLink"> @Model.LinkedInLink</a>
 
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Phone Number : </h3>
-            </div>
-            <div class="col-md-6">
-                <h3>@Model.PhoneNumber </h3>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Email Address : </h3>
-
-            </div>
-            <div class="col-md-6">
-                <h3>@Model.Email </h3>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <h3>See Employee skills on Linkded In : </h3>
-            </div>
-            <div class="col-md-6">
-                <a target="_blank" href="@Model.LinkedInLink">@Model.LinkedInLink</a> 
-            </div>
-
-        </div>
-
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            <h6 class="mb-0">Job Position</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @Model.JobPostion
+                            </div>
+                        </div>
+                        <hr>
+                        
+                        </div>
+                </div>
+                </div>
+                </div>
 
         <div class="row">
             <div class="col-md-6">

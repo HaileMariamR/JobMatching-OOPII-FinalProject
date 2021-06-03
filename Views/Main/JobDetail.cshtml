@@ -4,6 +4,14 @@
 
 }
 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
+
+    
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;700&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 
 
 
@@ -19,9 +27,9 @@
 
 
                   <div class="Container">
-                <div class="card"  style="width:1000px ; margin-left : 200px" style="">
+                <div class="card shadow pl-5 ml-5 card my-sm-5"  style="width:1000px ; margin-left : 200px"  style="">
                     <div class="card-body">
-                        <h3 class="card-title">@Model.JobTitle
+                        <h3 style="font-family: 'Yanone Kaffeesatz', sans-serif;" class="card-title">@Model.JobTitle
                         <img style="float:right" src=$"{@Model.CompanyNameLogo}">   <br>   
 
                         </h3>
@@ -57,7 +65,7 @@
 
                         <hr>
 
-                        <span><a style="text-decoration: none;" href=""> post date: @Model.dateTime</a></span>
+                        <span><a style="text-decoration: none;font-family: 'ZCOOL KuaiLe', cursive;" href=""> post date: @Model.dateTime</a></span>
                                 <form action="JobDetail" method="POST">
 
                                 <button style="float: right;"  type="submit"

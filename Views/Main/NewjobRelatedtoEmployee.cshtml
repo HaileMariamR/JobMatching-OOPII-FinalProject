@@ -9,9 +9,10 @@
 }
 
 
+
 <div style="margin-top:5rem"  class="row">
     <div class="col-md-12">
-        <h1>all application related to ur profile</h1>
+        <h1 style="font-family: 'Yanone Kaffeesatz', sans-serif;">all application related to ur profile</h1>
     </div>
 
 </div>
@@ -29,7 +30,7 @@
                         
                         
 
-                        <div class="card"  style="width:1000px ; margin-left : 200px" style="">
+                        <div class="shadow pl-5 ml-5 card my-sm-5"  style="width:1000px ; margin-left : 200px" style="">
                     <div class="card-body">
                         <h3 class="card-title">@item.JobTitle
                         <img style="float:right" src="a.jpg">   <br>   
@@ -66,7 +67,7 @@
 
                         <hr>
 
-                        <span><a style="text-decoration: none;" href=""> post date: @item.dateTime</a></span>
+                        <span><a  style="text-decoration: none;font-family: 'ZCOOL KuaiLe', cursive;" href=""> post date: @item.dateTime</a></span>
                                 <form action="JobDetail" method="POST">
                                     <button style="float: right;"  type="submit"
                                     asp-route-user="@User.Identity.Name"

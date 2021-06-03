@@ -68,7 +68,16 @@ namespace JobMatching_OOPII_FinalProject.Controllers
                     UserInfo.JobPostion = applicantsResume.JobPostion;
                   
                     UserInfo.LinkedInLink = applicantsResume.LinkedInLink;
+
+                    UserInfo.Email = applicantsResume.Email;
+
+                    UserInfo.PhoneNumber = applicantsResume.PhoneNumber;
+
+                    UserInfo.FullName = applicantsResume.FullName;
+
                     _database.SaveChanges();
+                            Alert(NotificationType.success , "You have successfully Updated Ur profile" , "Updated!");
+                    
 
 
                     return RedirectToAction("Resume" , "Main");

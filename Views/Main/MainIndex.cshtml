@@ -8,10 +8,14 @@
 }
 
 <link rel="stylesheet" href="~/css/search.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet">
 
     
-
-
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;700&display=swap" rel="stylesheet"> 
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
 <div class="">
     <div class="row">
         <br><br>
@@ -33,16 +37,16 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <center style="font-size: 30px;">List of avaliable Jobs</center>
+                    <center style="font-size: 30px;font-family: 'Suez One', serif;">List of avaliable Jobs</center>
                 </div>
             </div>
 
 
-
+    
 
 
             <div class="row">
-                <div  class="col-md-12" >
+                <div  class="col-md-12" >   
                 
                                 @{
                                     
@@ -53,10 +57,10 @@
                                         
 
                                 
-                                <div style="margin-top:1rem" class="Container main">
-                                    <div class="card" style="">
+                                <div style="margin-top:1rem" class="Container main shadow pl-5 ml-5 card my-sm-5">
+                                    <div style="">
                                         <div class="card-body">
-                                            <h3 class="card-title x">@item.JobTitle
+                                            <h3 style="font-family: 'Yanone Kaffeesatz', sans-serif;" class="card-title x">@item.JobTitle
                                             </h3>
                                             <a href="" >CompanyName :  @item.CompanyName</a >
 
@@ -80,7 +84,7 @@
 
                                             <hr>
 
-                                            <span><a style="text-decoration: none;" href=""> post date: @item.dateTime</a></span>
+                                            <span><a style="text-decoration: none;font-family: 'ZCOOL KuaiLe', cursive;" href=""> post date: @item.dateTime</a></span>
                                             <a  asp-action="JobDetail" asp-controller="Main" asp-route-jobTitle="@item.JobTitle" asp-route-companyName="@item.CompanyName"  style="float: right;" >view Detail ></a>
 
                                     

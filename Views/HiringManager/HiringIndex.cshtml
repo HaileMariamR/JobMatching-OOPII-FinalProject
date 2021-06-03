@@ -13,7 +13,7 @@
 <div style="margin-top:5rem" class="Container">
 
 
-        <h1>Your Posts</h1>
+        <h1 style="font-family: 'Yanone Kaffeesatz', sans-serif;" class="card-title x">Your Posts</h1>
     
                         @foreach(var item in Model)
 
@@ -22,16 +22,15 @@
 
                                     
 
-                                    <div class="Container">
-                         <div class="card" style="">
+                                    <div class="Container Container main shadow  card pl-5 ml-5  my-sm-5">
+                         <div class="" style="">
                             <div class="card-body">
-                                <h1 class="card-title">@item.JobTitle</h1>
+                                <h1 style="font-family: 'Yanone Kaffeesatz', sans-serif;" class="card-title">@item.JobTitle</h1>
                                 <hr>
                                 <a style="font-size: 2rem;" >@item.CompanyName</a >
                                 <p>@item.JobDetail</p>
                                 <hr>
                                 <span><a style="text-decoration: none;" href=""> post date:  @item.dateTime </a></span>
-                                <a style="float: right;" href="">see an employee related to this job</a>
                      
                         
                             </div>
